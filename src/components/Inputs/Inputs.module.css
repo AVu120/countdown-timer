@@ -1,0 +1,5 @@
+.root {
+  display: flex;
+  border: 3px solid blue;
+  margin-top: 20px;
+}

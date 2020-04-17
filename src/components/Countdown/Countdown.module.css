@@ -1,0 +1,5 @@
+.countdown__wrapper {
+  display: flex;
+  align-content: space-between;
+  border: 3px solid purple;
+}
