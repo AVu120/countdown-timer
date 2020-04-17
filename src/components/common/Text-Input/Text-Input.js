@@ -3,8 +3,8 @@ import TextField from "@material-ui/core/TextField";
 
 import css from "./Text-Input.module.css";
 
-const TextInput = ({ label, onChange }) => (
-  <form className={css.root} noValidate autoComplete="off">
+const TextInput = ({ label, onChange, className }) => (
+  <form className={className} noValidate autoComplete="off">
     <TextField
       id="outlined-basic"
       label={label}
