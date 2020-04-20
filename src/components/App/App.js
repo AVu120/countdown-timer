@@ -9,21 +9,22 @@ const App = () => {
   const [datetimeSelected, setDatetimeSelected] = useState(moment());
   const [countingInProgress, setCountingInProgress] = useState(false);
   const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
+    days: "0",
+    hours: "0",
+    minutes: "0",
+    seconds: "0",
   });
 
   const changeEventName = (event) => setEventName(event.target.value);
   const changeDatetimeSelected = (selectedDatetime) => {
+    const selectedLocalDatetime = moment.utc(selectedDatetime).local();
     if (
       typeof selectedDatetime !== "string" &&
-      selectedDatetime - moment() >= 0
+      selectedLocalDatetime - moment() >= 0
     ) {
-      setDatetimeSelected(selectedDatetime);
+      setDatetimeSelected(selectedLocalDatetime);
       const now = moment();
-      const countdown = moment(selectedDatetime - now);
+      const countdown = moment(selectedLocalDatetime - now);
       const days = countdown.format("D");
       const hours = countdown.format("HH");
       const minutes = countdown.format("mm");
@@ -37,22 +38,22 @@ const App = () => {
     }
   };
 
-  useEffect(() => {
-    if (countingInProgress)
-      setInterval(() => {
-        const countdown = datetimeSelected - moment();
-        const days = countdown.format("D");
-        const hours = countdown.format("HH");
-        const minutes = countdown.format("mm");
-        const seconds = countdown.format("ss");
-        setTimeLeft({
-          days,
-          hours,
-          minutes,
-          seconds,
-        });
-      }, 1000);
-  }, [countingInProgress]);
+  // useEffect(() => {
+  //   if (countingInProgress)
+  //     setInterval(() => {
+  //       const countdown = datetimeSelected - moment();
+  //       const days = countdown.format("D");
+  //       const hours = countdown.format("HH");
+  //       const minutes = countdown.format("mm");
+  //       const seconds = countdown.format("ss");
+  //       setTimeLeft({
+  //         days,
+  //         hours,
+  //         minutes,
+  //         seconds,
+  //       });
+  //     }, 1000);
+  // }, [countingInProgress]);
 
   return (
     <div className={css.root}>

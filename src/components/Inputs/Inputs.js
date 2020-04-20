@@ -22,7 +22,19 @@ export const Inputs = ({
         datetimeSelected={datetimeSelected}
         changeDatetimeSelected={changeDatetimeSelected}
       />
-      <StartButton />
+      <StartButton
+        startButtonRootClassName={css.startButtonRoot}
+        startButtonStyles={{
+          root: {
+            padding: "10px",
+          },
+          fontSizeLarge: {
+            padding: "10px",
+          },
+        }}
+        fontSize={"large"}
+        onClick={() => alert("Start button clicked.")}
+      />
     </div>
   );
 };

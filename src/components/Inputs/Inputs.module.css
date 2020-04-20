@@ -8,3 +8,8 @@
   height: 56px;
   margin-right: 10px;
 }
+
+.startButtonRoot {
+  composes: input;
+  cursor: pointer;
+}
