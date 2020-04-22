@@ -17,25 +17,26 @@ const App = () => {
 
   const changeEventName = (event) => setEventName(event.target.value);
   const changeDatetimeSelected = (selectedDatetime) => {
-    const selectedLocalDatetime = moment.utc(selectedDatetime).local();
-    if (
-      typeof selectedDatetime !== "string" &&
-      selectedLocalDatetime - moment() >= 0
-    ) {
-      setDatetimeSelected(selectedLocalDatetime);
-      const now = moment();
-      const countdown = moment(selectedLocalDatetime - now);
-      const days = countdown.format("D");
-      const hours = countdown.format("HH");
-      const minutes = countdown.format("mm");
-      const seconds = countdown.format("ss");
-      setTimeLeft({
-        days,
-        hours,
-        minutes,
-        seconds,
-      });
-    }
+    const now = moment();
+
+    const diff = moment.duration(selectedDatetime.diff(now));
+    console.log(diff.days(), diff.hours(), diff.minutes(), diff.seconds());
+    // setDatetimeSelected(selectedDatetime);
+    // const now = moment();
+    // const countdown = moment(selectedDatetime - now);
+    // const days = parseInt(countdown.format("D"));
+    // const hours = parseInt(countdown.format("HH"));
+    // const minutes = parseInt(countdown.format("mm"));
+    // const seconds = parseInt(countdown.format("ss"));
+
+    // if (typeof selectedDatetime !== "string" && selectedDatetime - moment() > 0)
+    //   setTimeLeft({
+    //     days,
+    //     hours,
+    //     minutes,
+    //     seconds,
+    //   });
+    // else alert("Please select datetime in future.");
   };
 
   // useEffect(() => {
