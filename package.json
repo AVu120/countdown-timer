@@ -1,5 +1,10 @@
 {
   "name": "countdown-timer",
+  "description": "Countdown timer built in react. User can write the name of an event that occurs any date and time in the future at which an alarm notification will occur. Timer can be reset to 0/changed to different date & time while timer is running.",
+  "keywords": [
+    "react",
+    "countdown-timer"
+  ],
   "version": "0.1.0",
   "private": true,
   "dependencies": {
