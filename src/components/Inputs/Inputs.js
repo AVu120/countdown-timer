@@ -9,6 +9,7 @@ export const Inputs = ({
   datetimeSelected,
   changeDatetimeSelected,
   actions,
+  timerStatus,
 }) => {
   return (
     <div className={css.inputs}>
@@ -34,7 +35,6 @@ export const Inputs = ({
         }}
         fontSize={"large"}
         actions={actions}
-        tooltipLabel={"Reset Timer"}
       />
     </div>
   );

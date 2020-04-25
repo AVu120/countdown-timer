@@ -10,7 +10,6 @@ const ActionButton = ({
   color,
   fontSize,
   actions,
-  tooltipLabel,
 }) => {
   const useStyles = makeStyles(startButtonStyles);
 

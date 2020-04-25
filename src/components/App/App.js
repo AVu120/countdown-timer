@@ -12,10 +12,9 @@ const App = () => {
     hours: "0",
     minutes: "0",
     seconds: "0",
+    countdownStatus: "idle",
   });
   const changeEventName = (event) => setEventName(event.target.value);
-  const [alarmDoneCount, setAlarmDoneCount] = useState(-1);
-
   const changeDatetimeSelected = (selectedDatetime) => {
     if (typeof selectedDatetime !== "string") {
       setDatetimeSelected(selectedDatetime);
@@ -23,15 +22,15 @@ const App = () => {
   };
 
   const startCountdown = () => {
-    if (datetimeSelected - moment() > 0) {
-      const now = moment();
+    const now = moment();
+    if (datetimeSelected - now > 0) {
       const timeLeft = moment.duration(datetimeSelected.diff(now));
-
       setTimeLeft({
         days: timeLeft.days(),
         hours: timeLeft.hours(),
         minutes: timeLeft.minutes(),
         seconds: timeLeft.seconds(),
+        countdownStatus: "running",
       });
     } else alert("Please select datetime in future.");
   };
@@ -43,6 +42,7 @@ const App = () => {
       hours: "0",
       minutes: "0",
       seconds: "0",
+      countdownStatus: "reset",
     });
   };
 
@@ -52,25 +52,44 @@ const App = () => {
   useEffect(() => {
     const startCountdown = setInterval(() => {
       const now = moment();
-      const timeLeft = moment.duration(datetimeSelected.diff(now));
-      if (timeLeft.asSeconds() > 0)
+      const currentTimeLeft = moment.duration(datetimeSelected.diff(now));
+      if (currentTimeLeft.asSeconds() > 0)
         setTimeLeft({
-          days: timeLeft.days(),
-          hours: timeLeft.hours(),
-          minutes: timeLeft.minutes(),
-          seconds: timeLeft.seconds(),
+          ...timeLeft,
+          days: currentTimeLeft.days(),
+          hours: currentTimeLeft.hours(),
+          minutes: currentTimeLeft.minutes(),
+          seconds: currentTimeLeft.seconds(),
         });
       else {
         clearInterval(startCountdown);
-        setAlarmDoneCount(alarmDoneCount + 1);
+        setTimeLeft({
+          days: "0",
+          hours: "0",
+          minutes: "0",
+          seconds: "0",
+          countdownStatus:
+            timeLeft.countdownStatus === "idle"
+              ? "idle"
+              : timeLeft.countdownStatus === "running"
+              ? "done"
+              : timeLeft.countdownStatus === "done"
+              ? "done"
+              : "reset",
+        });
       }
     }, 1000);
     return () => clearInterval(startCountdown);
   }, [timeLeft]);
 
+  /* Fire event alarm/notification only if timer successly counts down to 0,
+     (timeLeft.countdownStatus === "done")
+     not when application initially loads (timeLeft.countdownStatus === "idle")
+     or when user restarts timer to 0 (timeLeft.countdownStatus === "restart") */
   useEffect(() => {
-    if (alarmDoneCount > 0) alert(`${eventName || "Event"} is starting now!`);
-  }, [alarmDoneCount]);
+    if (timeLeft.countdownStatus === "done")
+      alert(`${eventName || "Event"} is starting now!`);
+  }, [timeLeft.countdownStatus]);
 
   const actions = { startCountdown, resetCountdown };
   return (
