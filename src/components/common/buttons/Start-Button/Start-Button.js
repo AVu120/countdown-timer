@@ -7,14 +7,19 @@ const StartButton = ({
   startButtonStyles,
   color,
   fontSize,
-  onClick,
+  userActions,
 }) => {
   const useStyles = makeStyles(startButtonStyles);
 
   const classes = useStyles();
   return (
-    <div onClick={onClick} className={startButtonRootClassName}>
-      <PlayIcon classes={classes} color={color} fontSize={fontSize} />
+    <div className={startButtonRootClassName}>
+      <PlayIcon
+        classes={classes}
+        color={color}
+        fontSize={fontSize}
+        // onClick={() => userActions.startCountdown()}
+      />
     </div>
   );
 };

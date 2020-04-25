@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import CountdownItem from "./Countdown-Item/Countdown-Item";
 import css from "./Countdown.module.css";
 
 const Countdown = ({ timeLeft }) => {
   return (
-    <div className={css.countdown__wrapper}>
+    <div className={css.countdown}>
       <CountdownItem value={timeLeft.days} title="DAYS" />
       <CountdownItem value={timeLeft.hours} title="HOURS" />
       <CountdownItem value={timeLeft.minutes} title="MINUTES" />

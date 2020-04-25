@@ -9,21 +9,22 @@ export const Inputs = ({
   changeEventName,
   datetimeSelected,
   changeDatetimeSelected,
+  userActions,
 }) => {
   return (
-    <div className={css.root}>
+    <div className={css.inputs}>
       <EventNameInput
-        className={css.input}
+        className={css.input_item}
         label="Event Name"
         onChange={changeEventName}
       />
       <DatetimeInput
-        className={css.input}
+        className={css.input_item}
         datetimeSelected={datetimeSelected}
         changeDatetimeSelected={changeDatetimeSelected}
       />
       <StartButton
-        startButtonRootClassName={css.startButtonRoot}
+        startButtonRootClassName={css.input_startButton}
         startButtonStyles={{
           root: {
             padding: "10px",
@@ -33,7 +34,7 @@ export const Inputs = ({
           },
         }}
         fontSize={"large"}
-        onClick={() => alert("Start button clicked.")}
+        userActions={userActions}
       />
     </div>
   );

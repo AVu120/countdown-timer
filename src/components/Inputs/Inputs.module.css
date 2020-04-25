@@ -1,15 +1,15 @@
-.root {
+.inputs {
   display: flex;
   width: auto;
   border: 3px solid blue;
   margin-top: 20px;
 }
-.input {
+.input_item {
   height: 56px;
   margin-right: 10px;
 }
 
-.startButtonRoot {
-  composes: input;
+.input_startButton {
+  composes: input_item;
   cursor: pointer;
 }
