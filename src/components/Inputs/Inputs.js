@@ -1,7 +1,7 @@
 import React from "react";
 import EventNameInput from "../common/Text-Input/Text-Input";
 import DatetimeInput from "../common/Datetime-Input/Datetime-Input";
-import StartButton from "../common/buttons/Start-Button/Start-Button";
+import ResetButton from "../common/Buttons/Reset-Button";
 
 import css from "./Inputs.module.css";
 
@@ -9,7 +9,7 @@ export const Inputs = ({
   changeEventName,
   datetimeSelected,
   changeDatetimeSelected,
-  userActions,
+  resetCountdown,
 }) => {
   return (
     <div className={css.inputs}>
@@ -23,7 +23,7 @@ export const Inputs = ({
         datetimeSelected={datetimeSelected}
         changeDatetimeSelected={changeDatetimeSelected}
       />
-      <StartButton
+      <ResetButton
         startButtonRootClassName={css.input_startButton}
         startButtonStyles={{
           root: {
@@ -34,7 +34,7 @@ export const Inputs = ({
           },
         }}
         fontSize={"large"}
-        userActions={userActions}
+        onClick={resetCountdown}
       />
     </div>
   );

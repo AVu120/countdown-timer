@@ -1,5 +1,5 @@
 import React from "react";
-import PlayIcon from "@material-ui/icons/PlayCircleFilledWhite";
+import RefreshIcon from "@material-ui/icons/Refresh";
 import { makeStyles } from "@material-ui/core/styles";
 
 const StartButton = ({
@@ -7,18 +7,18 @@ const StartButton = ({
   startButtonStyles,
   color,
   fontSize,
-  userActions,
+  onClick,
 }) => {
   const useStyles = makeStyles(startButtonStyles);
 
   const classes = useStyles();
   return (
     <div className={startButtonRootClassName}>
-      <PlayIcon
+      <RefreshIcon
         classes={classes}
         color={color}
         fontSize={fontSize}
-        // onClick={() => userActions.startCountdown()}
+        onClick={onClick}
       />
     </div>
   );

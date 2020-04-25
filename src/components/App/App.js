@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
 import moment from "moment";
-import css from "./App.module.css";
+import React, { useEffect, useState } from "react";
 import Countdown from "../Countdown/Countdown";
 import Inputs from "../Inputs/Inputs";
+import css from "./App.module.css";
 
 const App = () => {
   const [eventName, setEventName] = useState("");
@@ -14,20 +14,6 @@ const App = () => {
     seconds: "0",
   });
   const changeEventName = (event) => setEventName(event.target.value);
-  // const [countdownInProgress, setCountdownInProgress] = useState(false);
-
-  // const updateCount = () => {
-  //   const now = moment();
-  //   const timeLeft = moment.duration(datetimeSelected.diff(now));
-  //   if (timeLeft.asSeconds() > 0)
-  //     setTimeLeft({
-  //       days: timeLeft.days(),
-  //       hours: timeLeft.hours(),
-  //       minutes: timeLeft.minutes(),
-  //       seconds: timeLeft.seconds(),
-  //     });
-  //   else clearInterval(countdownTimer);
-  // };
 
   const changeDatetimeSelected = (selectedDatetime) => {
     setDatetimeSelected(selectedDatetime);
@@ -47,28 +33,15 @@ const App = () => {
     } else alert("Please select datetime in future.");
   };
 
-  // const updateCount = () => {
-  //   const now = moment();
-  //   const currentTimeLeft = moment.duration(datetimeSelected.diff(now));
-  //   if (currentTimeLeft.asSeconds() > 0)
-  //     setTimeLeft({
-  //       days: currentTimeLeft.days(),
-  //       hours: currentTimeLeft.hours(),
-  //       minutes: currentTimeLeft.minutes(),
-  //       seconds: currentTimeLeft.seconds(),
-  //     });
-  //   else clearInterval(countDown);
-  // };
-
-  // const startCountdown = () => {
-  //   // const startCountdown = countDown;
-  // };
-
-  // const resetCountdown = () => {
-  //   const now = moment();
-  //   setTimeLeft(now);
-  // };
-  // const userActions = { startCountdown, resetCountdown };
+  const resetCountdown = () => {
+    setDatetimeSelected(moment());
+    setTimeLeft({
+      days: "0",
+      hours: "0",
+      minutes: "0",
+      seconds: "0",
+    });
+  };
 
   useEffect(() => {
     const startCountdown = setInterval(() => {
@@ -88,14 +61,14 @@ const App = () => {
 
   return (
     <div className={css.App}>
-      <h1>Placeholder Countdown Timer Title</h1>
+      <h1>Countdown Timer</h1>
       <Countdown timeLeft={timeLeft} />
       <Inputs
         eventName={eventName}
         changeEventName={changeEventName}
         datetimeSelected={datetimeSelected}
         changeDatetimeSelected={changeDatetimeSelected}
-        // userActions={userActions}
+        resetCountdown={resetCountdown}
       />
     </div>
   );
