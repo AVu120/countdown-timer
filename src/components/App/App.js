@@ -94,7 +94,7 @@ const App = () => {
   const actions = { startCountdown, resetCountdown };
   return (
     <div className={css.App}>
-      <h1>Countdown Timer!</h1>
+      <h1>Countdown Timer</h1>
       <Countdown timeLeft={timeLeft} />
       <Inputs
         eventName={eventName}
