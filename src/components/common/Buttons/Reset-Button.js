@@ -1,6 +1,7 @@
-import React from "react";
-import RefreshIcon from "@material-ui/icons/Refresh";
 import { makeStyles } from "@material-ui/core/styles";
+import RefreshIcon from "@material-ui/icons/Refresh";
+import Tooltip from "@material-ui/core/Tooltip";
+import React from "react";
 
 const StartButton = ({
   startButtonRootClassName,
@@ -8,18 +9,21 @@ const StartButton = ({
   color,
   fontSize,
   onClick,
+  tooltipLabel,
 }) => {
   const useStyles = makeStyles(startButtonStyles);
 
   const classes = useStyles();
   return (
     <div className={startButtonRootClassName}>
-      <RefreshIcon
-        classes={classes}
-        color={color}
-        fontSize={fontSize}
-        onClick={onClick}
-      />
+      <Tooltip title={tooltipLabel} aria-label="add">
+        <RefreshIcon
+          classes={classes}
+          color={color}
+          fontSize={fontSize}
+          onClick={onClick}
+        />
+      </Tooltip>
     </div>
   );
 };

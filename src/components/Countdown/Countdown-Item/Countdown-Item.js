@@ -1,5 +1,4 @@
 import React from "react";
-
 import css from "./Countdown-Item.module.css";
 
 const CountdownItem = ({ value, title }) => {

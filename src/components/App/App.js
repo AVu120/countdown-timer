@@ -14,13 +14,14 @@ const App = () => {
     seconds: "0",
   });
   const changeEventName = (event) => setEventName(event.target.value);
+  const [alarmDoneCount, setAlarmDoneCount] = useState(-1);
 
   const changeDatetimeSelected = (selectedDatetime) => {
-    setDatetimeSelected(selectedDatetime);
     if (
       typeof selectedDatetime !== "string" &&
       selectedDatetime - moment() > 0
     ) {
+      setDatetimeSelected(selectedDatetime);
       const now = moment();
       const timeLeft = moment.duration(selectedDatetime.diff(now));
 
@@ -43,6 +44,9 @@ const App = () => {
     });
   };
 
+  /* After user selects datetime, start countdown (decrementing by 1s).
+  Countdown will stop when the component unmounts (i.e. when the user selects another datetime, causing the component to unmount then mount again).
+  The countdown restarts when the component remounts. */
   useEffect(() => {
     const startCountdown = setInterval(() => {
       const now = moment();
@@ -54,11 +58,17 @@ const App = () => {
           minutes: timeLeft.minutes(),
           seconds: timeLeft.seconds(),
         });
-      else clearInterval(startCountdown);
+      else {
+        clearInterval(startCountdown);
+        setAlarmDoneCount(alarmDoneCount + 1);
+      }
     }, 1000);
     return () => clearInterval(startCountdown);
   }, [datetimeSelected]);
 
+  useEffect(() => {
+    if (alarmDoneCount > 0) alert(`${eventName || "Event"} is starting now!`);
+  }, [alarmDoneCount]);
   return (
     <div className={css.App}>
       <h1>Countdown Timer</h1>
