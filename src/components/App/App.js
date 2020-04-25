@@ -17,13 +17,15 @@ const App = () => {
   const [alarmDoneCount, setAlarmDoneCount] = useState(-1);
 
   const changeDatetimeSelected = (selectedDatetime) => {
-    if (
-      typeof selectedDatetime !== "string" &&
-      selectedDatetime - moment() > 0
-    ) {
+    if (typeof selectedDatetime !== "string") {
       setDatetimeSelected(selectedDatetime);
+    }
+  };
+
+  const startCountdown = () => {
+    if (datetimeSelected - moment() > 0) {
       const now = moment();
-      const timeLeft = moment.duration(selectedDatetime.diff(now));
+      const timeLeft = moment.duration(datetimeSelected.diff(now));
 
       setTimeLeft({
         days: timeLeft.days(),
@@ -64,11 +66,13 @@ const App = () => {
       }
     }, 1000);
     return () => clearInterval(startCountdown);
-  }, [datetimeSelected]);
+  }, [timeLeft]);
 
   useEffect(() => {
     if (alarmDoneCount > 0) alert(`${eventName || "Event"} is starting now!`);
   }, [alarmDoneCount]);
+
+  const actions = { startCountdown, resetCountdown };
   return (
     <div className={css.App}>
       <h1>Countdown Timer</h1>
@@ -78,7 +82,7 @@ const App = () => {
         changeEventName={changeEventName}
         datetimeSelected={datetimeSelected}
         changeDatetimeSelected={changeDatetimeSelected}
-        resetCountdown={resetCountdown}
+        actions={actions}
       />
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import ResetButton from "../common/Buttons/Reset-Button";
+import ActionButton from "../common/Buttons/Action-Button";
 import DatetimeInput from "../common/Datetime-Input/Datetime-Input";
 import EventNameInput from "../common/Text-Input/Text-Input";
 import css from "./Inputs.module.css";
@@ -8,7 +8,7 @@ export const Inputs = ({
   changeEventName,
   datetimeSelected,
   changeDatetimeSelected,
-  resetCountdown,
+  actions,
 }) => {
   return (
     <div className={css.inputs}>
@@ -22,7 +22,7 @@ export const Inputs = ({
         datetimeSelected={datetimeSelected}
         changeDatetimeSelected={changeDatetimeSelected}
       />
-      <ResetButton
+      <ActionButton
         startButtonRootClassName={css.input_startButton}
         startButtonStyles={{
           root: {
@@ -33,7 +33,7 @@ export const Inputs = ({
           },
         }}
         fontSize={"large"}
-        onClick={resetCountdown}
+        actions={actions}
         tooltipLabel={"Reset Timer"}
       />
     </div>
