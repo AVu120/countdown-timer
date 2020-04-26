@@ -35,6 +35,7 @@ export const Inputs = ({
         }}
         fontSize={"large"}
         actions={actions}
+        timerStatus={timerStatus}
       />
     </div>
   );

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Countdown from "../Countdown/Countdown";
 import Inputs from "../Inputs/Inputs";
 import css from "./App.module.css";
+import alarmBellSoundFile from "../../sounds/alarm-clock-bell-sound.mp3";
 
 const App = () => {
   const [eventName, setEventName] = useState("");
@@ -14,6 +15,7 @@ const App = () => {
     seconds: "0",
     countdownStatus: "idle",
   });
+  const alarmBellSound = new Audio(alarmBellSoundFile);
   const changeEventName = (event) => setEventName(event.target.value);
   const changeDatetimeSelected = (selectedDatetime) => {
     if (typeof selectedDatetime !== "string") {
@@ -71,30 +73,45 @@ const App = () => {
           countdownStatus:
             timeLeft.countdownStatus === "idle"
               ? "idle"
-              : timeLeft.countdownStatus === "running"
-              ? "done"
-              : timeLeft.countdownStatus === "done"
+              : timeLeft.countdownStatus === "running" ||
+                timeLeft.countdownStatus === "done"
               ? "done"
               : "reset",
         });
       }
     }, 1000);
     return () => clearInterval(startCountdown);
-  }, [timeLeft]);
+  }, [timeLeft.countdownStatus]);
 
-  /* Fire event alarm/notification only if timer successly counts down to 0,
+  /* Fire alarm & event notification only if timer successly counts down to 0,
      (timeLeft.countdownStatus === "done")
      not when application initially loads (timeLeft.countdownStatus === "idle")
      or when user restarts timer to 0 (timeLeft.countdownStatus === "restart") */
   useEffect(() => {
-    if (timeLeft.countdownStatus === "done")
-      alert(`${eventName || "Event"} is starting now!`);
+    if (timeLeft.countdownStatus === "done") {
+      alarmBellSound.play();
+    }
   }, [timeLeft.countdownStatus]);
 
   const actions = { startCountdown, resetCountdown };
   return (
-    <div className={css.App}>
-      <h1>Countdown Timer</h1>
+    <div className={css.app}>
+      <h1
+        className={
+          timeLeft.countdownStatus !== "done"
+            ? css.app__title
+            : css.app__title_timerDone
+        }
+      >
+        {timeLeft.countdownStatus !== "done"
+          ? "Countdown Timer"
+          : `${eventName || "Event"} has started!`}
+      </h1>
+      {timeLeft.countdownStatus === "done" && (
+        <h3>
+          Select another datetime and press play to start countdown again.
+        </h3>
+      )}
       <Countdown timeLeft={timeLeft} />
       <Inputs
         eventName={eventName}
@@ -102,6 +119,7 @@ const App = () => {
         datetimeSelected={datetimeSelected}
         changeDatetimeSelected={changeDatetimeSelected}
         actions={actions}
+        timerStatus={timeLeft.countdownStatus}
       />
     </div>
   );

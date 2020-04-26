@@ -1,4 +1,4 @@
-.App {
+.app {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6,7 +6,17 @@
   height: 100vh;
 }
 
-h1 {
-  font-size: 100px;
+.app__title {
+  font-size: 75px;
   font-family: "Georgia";
+  margin: 20px;
+}
+.app__title_timerDone {
+  composes: app__title;
+  margin: 0;
+}
+
+h3 {
+  font-family: "Georgia";
+  margin: 0 10;
 }
