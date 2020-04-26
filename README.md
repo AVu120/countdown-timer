@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### View this application running at: https://codesandbox.io/s/github/AVu120/countdown-timer
 
-### To run this project:
+### To manually run this project:
 
 ### `git clone https://github.com/AVu120/countdown-timer.git`
 ### `cd countdown-timer`
