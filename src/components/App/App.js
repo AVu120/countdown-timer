@@ -15,7 +15,7 @@ const App = () => {
     seconds: "0",
     countdownStatus: "idle",
   });
-  const alarmBellSound = new Audio(alarmBellSoundFile);
+  // const alarmBellSound = new Audio(alarmBellSoundFile);
   const changeEventName = (event) => setEventName(event.target.value);
   const changeDatetimeSelected = (selectedDatetime) => {
     if (typeof selectedDatetime !== "string") {
@@ -89,7 +89,7 @@ const App = () => {
      or when user restarts timer to 0 (timeLeft.countdownStatus === "restart") */
   useEffect(() => {
     if (timeLeft.countdownStatus === "done") {
-      alarmBellSound.play();
+      // alarmBellSound.play();
     }
   }, [timeLeft.countdownStatus]);
 
