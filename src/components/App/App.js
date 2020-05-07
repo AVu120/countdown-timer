@@ -9,6 +9,8 @@ const App = () => {
   const [eventName, setEventName] = useState("");
   const [datetimeSelected, setDatetimeSelected] = useState(moment());
   const [timeLeft, setTimeLeft] = useState({
+    years: "0",
+    months: "0",
     days: "0",
     hours: "0",
     minutes: "0",
@@ -28,6 +30,8 @@ const App = () => {
     if (datetimeSelected - now > 0) {
       const timeLeft = moment.duration(datetimeSelected.diff(now));
       setTimeLeft({
+        years: timeLeft.years(),
+        months: timeLeft.months(),
         days: timeLeft.days(),
         hours: timeLeft.hours(),
         minutes: timeLeft.minutes(),
@@ -40,6 +44,8 @@ const App = () => {
   const resetCountdown = () => {
     setDatetimeSelected(moment());
     setTimeLeft({
+      years: "0",
+      months: "0",
       days: "0",
       hours: "0",
       minutes: "0",
@@ -58,6 +64,8 @@ const App = () => {
       if (currentTimeLeft.asSeconds() > 0)
         setTimeLeft({
           ...timeLeft,
+          years: currentTimeLeft.years(),
+          months: currentTimeLeft.months(),
           days: currentTimeLeft.days(),
           hours: currentTimeLeft.hours(),
           minutes: currentTimeLeft.minutes(),
@@ -66,6 +74,7 @@ const App = () => {
       else {
         clearInterval(startCountdown);
         setTimeLeft({
+          months: "0",
           days: "0",
           hours: "0",
           minutes: "0",
