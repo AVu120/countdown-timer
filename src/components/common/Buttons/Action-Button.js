@@ -1,53 +1,31 @@
-import { makeStyles } from "@material-ui/core/styles";
+import IconButton from "@material-ui/core/IconButton";
+import Tooltip from "@material-ui/core/Tooltip";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import RefreshIcon from "@material-ui/icons/Refresh";
-import Tooltip from "@material-ui/core/Tooltip";
-import IconButton from "@material-ui/core/IconButton";
-import React, { useEffect } from "react";
+import React from "react";
 
-const ActionButton = ({
-  startButtonRootClassName,
-  iconStyle,
-  color,
-  fontSize,
-  actions,
-  timerStatus,
-}) => {
-  const useStyles = makeStyles(iconStyle);
-
-  const classes = useStyles();
-
-  useEffect(() => {
-    console.log(timerStatus);
-  }, [timerStatus]);
-  return (
-    <div className={startButtonRootClassName}>
-      <IconButton size="small">
-        {(timerStatus === "idle" ||
-          timerStatus === "reset" ||
-          timerStatus === "done") && (
-          <Tooltip title="Start Countdown" aria-label="add">
-            <PlayArrowIcon
-              classes={classes}
-              color={color}
-              fontSize={fontSize}
-              onClick={() => actions.startCountdown()}
-            />
-          </Tooltip>
-        )}
-        {timerStatus === "running" && (
-          <Tooltip title="Reset Timer to 0" aria-label="add">
-            <RefreshIcon
-              classes={classes}
-              color={color}
-              fontSize={fontSize}
-              onClick={() => actions.resetCountdown()}
-            />
-          </Tooltip>
-        )}
-      </IconButton>
-    </div>
-  );
-};
-
+const ActionButton = ({ iconStyle, color, actions, timerStatus }) => (
+  <IconButton size="small">
+    {(timerStatus === "idle" ||
+      timerStatus === "reset" ||
+      timerStatus === "done") && (
+      <Tooltip title="Start Countdown" aria-label="add">
+        <PlayArrowIcon
+          style={iconStyle}
+          color={color}
+          onClick={() => actions.startCountdown()}
+        />
+      </Tooltip>
+    )}
+    {timerStatus === "running" && (
+      <Tooltip title="Reset Timer to 0" aria-label="add">
+        <RefreshIcon
+          style={iconStyle}
+          color={color}
+          onClick={() => actions.resetCountdown()}
+        />
+      </Tooltip>
+    )}
+  </IconButton>
+);
 export default ActionButton;

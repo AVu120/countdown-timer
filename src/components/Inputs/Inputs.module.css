@@ -10,7 +10,7 @@
   margin-right: 0.7vw;
 }
 
-.input_startButton {
+.input_actionButton {
   composes: input_item;
   cursor: pointer;
   position: relative;
