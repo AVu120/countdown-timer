@@ -17,6 +17,8 @@ export const Inputs = ({
         className={css.input_item}
         label="Event Name"
         onChange={changeEventName}
+        inputStyle={{ height: "15px", width: "10vw", fontSize: "2vh" }}
+        labelStyle={{ fontSize: "2vh" }}
       />
       <DatetimeInput
         className={css.input_item}
@@ -25,17 +27,20 @@ export const Inputs = ({
       />
       <ActionButton
         startButtonRootClassName={css.input_startButton}
-        startButtonStyles={{
+        iconStyle={{
           root: {
-            padding: "10px",
+            padding: "1vh",
           },
           fontSizeLarge: {
-            padding: "10px",
+            padding: "1vh",
+            fontSize: "4.5vh",
           },
         }}
+        labelStyle={{}}
         fontSize={"large"}
         actions={actions}
         timerStatus={timerStatus}
+        color="primary"
       />
     </div>
   );
