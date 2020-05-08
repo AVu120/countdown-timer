@@ -15,7 +15,7 @@ const Title = ({ timeLeft, eventName, titleClassName }) => {
           <HelpIcon
             title={
               <div>
-                <h3>Instructions:</h3>
+                <h2>Instructions:</h2>
                 <p>
                   1. Enter the name of the event you want to count down to using
                   the 1st input.
@@ -38,8 +38,8 @@ const Title = ({ timeLeft, eventName, titleClassName }) => {
         </div>
       </div>
       {timeLeft.countdownStatus === "done" && (
-        <h3 className={css.title__doneMessage}>
-          Select another datetime and press play to start countdown again.
+        <h3 id="message" className={css.title__doneMessage}>
+          Select another date & time and press play to start countdown again.
         </h3>
       )}
     </div>
