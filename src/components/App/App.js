@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Countdown from "../Countdown/Countdown";
 import Inputs from "../Inputs/Inputs";
 import css from "./App.module.css";
+import Title from "../Title/Title";
 import alarmBellSoundFile from "../../sounds/alarm-clock-bell-sound.mp3";
 
 const App = () => {
@@ -105,22 +106,15 @@ const App = () => {
   const actions = { startCountdown, resetCountdown };
   return (
     <div className={css.app}>
-      <h1
-        className={
+      <Title
+        timeLeft={timeLeft}
+        eventName={eventName}
+        titleClassName={
           timeLeft.countdownStatus !== "done"
             ? css.app__title
             : css.app__title_timerDone
         }
-      >
-        {timeLeft.countdownStatus !== "done"
-          ? "Countdown Timer"
-          : `${eventName || "Event"} has started!`}
-      </h1>
-      {timeLeft.countdownStatus === "done" && (
-        <h3>
-          Select another datetime and press play to start countdown again.
-        </h3>
-      )}
+      />
       <Countdown timeLeft={timeLeft} />
       <Inputs
         eventName={eventName}
