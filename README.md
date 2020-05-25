@@ -2,9 +2,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Run application at: https://avu120.github.io/countdown-timer/
 
-### Edit/fork CodeSandbox at: https://codesandbox.io/s/oyhxw
+### Edit/fork CodeSandbox at: https://codesandbox.io/s/031qi
 
-### Browse CodeSandbox (read-only): https://codesandbox.io/s/github/AVu120/countdown-timer
+### Browse CodeSandbox (read-only) at: https://codesandbox.io/s/github/AVu120/countdown-timer
 
 ### To manually run this project:
 
