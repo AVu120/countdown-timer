@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/countdown-timer/static/css/main.41356f7d.chunk.css",
+    "main.js": "/countdown-timer/static/js/main.38a6a16a.chunk.js",
+    "main.js.map": "/countdown-timer/static/js/main.38a6a16a.chunk.js.map",
+    "runtime-main.js": "/countdown-timer/static/js/runtime-main.619d8038.js",
+    "runtime-main.js.map": "/countdown-timer/static/js/runtime-main.619d8038.js.map",
+    "static/js/2.b4d8ff6f.chunk.js": "/countdown-timer/static/js/2.b4d8ff6f.chunk.js",
+    "static/js/2.b4d8ff6f.chunk.js.map": "/countdown-timer/static/js/2.b4d8ff6f.chunk.js.map",
+    "index.html": "/countdown-timer/index.html",
+    "precache-manifest.c619d5e6f96eb9a92a45d7bd78b0bd9e.js": "/countdown-timer/precache-manifest.c619d5e6f96eb9a92a45d7bd78b0bd9e.js",
+    "service-worker.js": "/countdown-timer/service-worker.js",
+    "static/css/main.41356f7d.chunk.css.map": "/countdown-timer/static/css/main.41356f7d.chunk.css.map",
+    "static/js/2.b4d8ff6f.chunk.js.LICENSE.txt": "/countdown-timer/static/js/2.b4d8ff6f.chunk.js.LICENSE.txt",
+    "static/media/alarm-clock-bell-sound.mp3": "/countdown-timer/static/media/alarm-clock-bell-sound.c4ccb051.mp3"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.619d8038.js",
+    "static/js/2.b4d8ff6f.chunk.js",
+    "static/css/main.41356f7d.chunk.css",
+    "static/js/main.38a6a16a.chunk.js"
+  ]
+}
