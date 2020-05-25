@@ -1,10 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## How to Run Application
+
 ### Run application at: https://avu120.github.io/countdown-timer/
 
 ### View/edit/fork CodeSandbox at: https://codesandbox.io/s/github/AVu120/countdown-timer
 
-### To manually run this project:
+## Application Set Up:
 
 ### `git clone https://github.com/AVu120/countdown-timer.git`
 
