@@ -4,7 +4,6 @@ import Countdown from "../Countdown/Countdown";
 import Inputs from "../Inputs/Inputs";
 import css from "./App.module.css";
 import Title from "../Title/Title";
-import alarmBellSoundFile from "../../sounds/alarm-clock-bell-sound.mp3";
 
 const App = () => {
   const [eventName, setEventName] = useState("");
@@ -18,7 +17,6 @@ const App = () => {
     seconds: "0",
     countdownStatus: "idle",
   });
-  // const alarmBellSound = new Audio(alarmBellSoundFile);
   const changeEventName = (event) => setEventName(event.target.value);
   const changeDatetimeSelected = (selectedDatetime) => {
     if (typeof selectedDatetime !== "string") {
@@ -91,15 +89,15 @@ const App = () => {
       }
     }, 1000);
     return () => clearInterval(startCountdown);
+    // eslint-disable-next-line
   }, [timeLeft.countdownStatus]);
 
-  /* Fire alarm & event notification only if timer successly counts down to 0,
+  /* Event notification renders only if timer successfully counts down to 0,
      (timeLeft.countdownStatus === "done")
      not when application initially loads (timeLeft.countdownStatus === "idle")
      or when user restarts timer to 0 (timeLeft.countdownStatus === "restart") */
   useEffect(() => {
     if (timeLeft.countdownStatus === "done") {
-      // alarmBellSound.play();
     }
   }, [timeLeft.countdownStatus]);
 
