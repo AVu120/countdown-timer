@@ -33,13 +33,14 @@ const Title = ({ timeLeft, eventName, titleClassName }) => {
                 </p>
               </div>
             }
-            iconStyle={{ fontSize: "3vh" }}
+            iconStyle={{ fontSize: "clamp(20px,3vh,100px)" }}
           />
         </div>
       </div>
       {timeLeft.countdownStatus === "done" && (
         <h3 id="message" className={css.title__doneMessage}>
-          Select another date & time and press play to start countdown again.
+          Write another event name, select another date & time and press play
+          button to start countdown again.
         </h3>
       )}
     </div>

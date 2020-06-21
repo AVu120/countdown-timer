@@ -3,10 +3,10 @@
   flex-direction: column;
   align-items: center;
   padding: 0 2vh 2vh;
-  font-size: 8vh;
+  font-size: clamp(50px, 8vh, 100px);
 }
 
 .countdown__itemTitle {
-  font-size: 2.2vh;
+  font-size: clamp(15px, 2.2vh, 100px);
   font-family: "Georgia";
 }

@@ -7,7 +7,7 @@
 }
 
 .app__title {
-  font-size: 8vh;
+  font-size: clamp(40px, 8vh, 300px);
   font-family: "Georgia";
   margin: 2.3vh;
 }
@@ -17,15 +17,15 @@
 }
 
 h2 {
-  font-size: 2vh;
+  font-size: clamp(15px, 2vh, 50px);
 }
 
 h3 {
   font-family: "Georgia";
   margin: 0.5vh;
-  font-size: 2vh;
+  font-size: clamp(15px, 2vh, 50px);
 }
 
 p {
-  font-size: 1.3vh;
+  font-size: clamp(10px, 1.3vh, 50px);
 }
