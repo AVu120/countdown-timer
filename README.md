@@ -1,6 +1,8 @@
 # Countdown Timer
 
-![image](https://user-images.githubusercontent.com/38395166/85216520-b59cba80-b3c8-11ea-8c3e-25df4a7040ef.png)
+![image](https://user-images.githubusercontent.com/38395166/132077645-279366fc-3999-4c45-9b6b-87387409f7fd.png)
+
+Play with this app at https://avu120.github.io/countdown-timer/.
 
 ## Description
 
